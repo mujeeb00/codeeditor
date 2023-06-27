@@ -105,3 +105,17 @@ a {
     color-scheme: dark;
   }
 }
+.mainContainer{
+  background-color: rgb(192, 230, 230);
+  height: 700px;
+}
+textarea{
+  height: 300px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+iframe{
+  height: 250px;
+}
