@@ -1,10 +1,13 @@
-import React from "react";
-import next, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {PiContactlessPaymentFill} from 'react-icons/pi'
-import {FaEnvira} from 'react-icons/fa'
-import {FaJs} from 'react-icons/fa'
-import {RiSettings3Fill} from 'react-icons/ri'
+import { ImHtmlFive } from "react-icons/im";
+import { FaEnvira } from "react-icons/fa";
+import { FaJs } from "react-icons/fa";
+import { RiSettings3Fill } from "react-icons/ri";
+import Editor, { OnChange } from "@monaco-editor/react";
+
+
+
 
 interface Code {
   html: string;
@@ -12,18 +15,18 @@ interface Code {
   javascript: string;
 }
 
-const Test = () => {
+const CodeEditor = () => {
   const [code, setCode] = useState<Code>({
     html: "",
     css: "",
     javascript: "",
   });
 
-  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange: OnChange = (value, event) => {
+    const { name } = event;
     setCode((prevCode) => ({
       ...prevCode,
-      [name]: value,
+      [name]: value || "", // Handle undefined value
     }));
   };
 
@@ -46,80 +49,72 @@ const Test = () => {
       }
     }
   };
-  return (
-    <div className="mainContainer ">
-      <div className="mt-3 row bg-black ">
-        
-        
-        {/* First Column */}
-        <div className="col-4 ms-5">
-          <div className="row ">
-            <div className="col-3 bg-dark text-light titleRow ms-3 ">
-              <PiContactlessPaymentFill className="text-danger ms-1" />
-              HTML
-            </div>
-            <div className="col-8 bg-black "><RiSettings3Fill/></div>
-          </div>
 
-          <div className="row">
-            <div className="col-12 ">
-              <textarea
-                className="bg-secondary bg-dark"
-                name="html"
-                onChange={handleInputChange}
-                onKeyUp={handleKeyPress}
-              ></textarea>
-            </div>
-          </div>
+  return (
+    <div className="mainContainer">
+      <div className="mt-3 row bg-black">
+        {/* First Column */}
+        <div className="col-4 ">
+          <br />
+          <div><ImHtmlFive size={25} className="text-danger mb-1"/></div>
+        <Editor
+                height="200px"
+                language="html"
+                value={code.html}
+                theme="vs-dark-oceanic-next"
+                onChange={(value, event) =>
+                  handleInputChange(value, { name: "html" })
+                }
+              />
+
+        
         </div>
 
         {/* Second Column */}
 
-        <div className="col-3">
-          <div className="row ">
-            <div className="col-3 bg-dark text-light titleRow">
-              <FaEnvira className="text-primary" />
-              CSS
-            </div>
-            <div className="col-9 bg-black p-0"><RiSettings3Fill/></div>
-          </div>
-
-          <div className="row">
-              <textarea
-                className="bg-dark text-light"
-                name="css"
-                onChange={handleInputChange}
-                onKeyUp={handleKeyPress}
-              ></textarea>       
-          </div>
+     
+        <div className="col-4">
+        <br />
+        <div>
+        <FaEnvira size={25} className="text-info"/>
         </div>
-         
-         {/* Third Column */}
-        <div className="col-4 ms-2">
-          <div className="row ">
-            <div className="col-3 bg-dark text-warning ">
-              <FaJs />
-            </div>
-            <div className="col-9 bg-black p-0"></div>
-          </div>
+  
+        <Editor
+                height="200px"
+                language="css"
+                value={code.css}
+                theme="vs-dark-oceanic-next"
+                onChange={(value, event) =>
+                  handleInputChange(value, { name: "css" })
+                }
+              />
+          
+        </div>
 
-          <div className="row ">
-              <textarea
-                className="bg-dark text-light"
-                name="javascript"
-                onChange={handleInputChange}
-                onKeyUp={handleKeyPress}
-              ></textarea>
-            </div>
+        {/* Third Column */}
+        <div className="col-4 ">
+          <br />
+          <div>
+          <FaJs size={25} className='text-warning' />
+          </div>
+        <Editor
+                height="200px"
+                language="javascript"
+                value={code.javascript}
+                theme="vs-dark-oceanic-next"
+                onChange={(value, event) =>
+                  handleInputChange(value, { name: "javascript" })
+                }
+              />
         </div>
       </div>
-
-      <div className="row mt-2 bg-sucess">
-        <div className="col-12 ms-5">
+<br />
+      <div className="c mt-2 bg-sucess ">
+        <div className="container-fluid ">
           <iframe
             srcDoc={`${code.html}<style>${code.css}</style><script>${code.javascript}</script>`}
             id="output"
-            className="text-primary container text-dark"
+            className="text-primary  text-dark container-fluid"
           ></iframe>
         </div>
       </div>
@@ -127,4 +122,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default CodeEditor;
