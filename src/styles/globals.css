@@ -83,6 +83,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: rgb(31, 29, 29);
 }
 
 body {
@@ -106,7 +107,7 @@ a {
   }
 }
 .mainContainer{
-  background-color: rgb(192, 230, 230);
+  background-color: rgb(24, 23, 23);
   height: 700px;
 }
 textarea{
@@ -117,5 +118,8 @@ textarea{
   padding: 5px;
 }
 iframe{
+  background-color: rgb(230, 228, 228);
   height: 250px;
+  width: 1000px;
 }
+
