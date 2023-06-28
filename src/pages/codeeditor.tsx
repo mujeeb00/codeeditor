@@ -52,7 +52,7 @@ const CodeEditor = () => {
     <div className="mainContainer">
       <div className="mt-3 row bg-black">
         {/* First Column */}
-        <div className="col-4 ">
+        <div className=" col-md-12 col-lg-4">
           <br />
           <div>
             <ImHtmlFive size={25} className="text-danger mb-1" />
@@ -70,7 +70,7 @@ const CodeEditor = () => {
 
         {/* Second Column */}
 
-        <div className="col-4">
+        <div className="col-md-12 col-lg-4">
           <br />
           <div>
             <FaEnvira size={25} className="text-info" />
@@ -88,7 +88,7 @@ const CodeEditor = () => {
         </div>
 
         {/* Third Column */}
-        <div className="col-4 ">
+        <div className="col-md-12 col-lg-4">
           <br />
           <div>
             <FaJs size={25} className="text-warning" />
