@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ImHtmlFive } from "react-icons/im";
 import { FaEnvira } from "react-icons/fa";
 import { FaJs } from "react-icons/fa";
-import { RiSettings3Fill } from "react-icons/ri";
 import Editor, { OnChange } from "@monaco-editor/react";
 
 interface Code {
@@ -19,11 +18,13 @@ const CodeEditor = () => {
     javascript: "",
   });
 
+  type OnChange = (value: string, event: { name: any }) => void;
+
   const handleInputChange: OnChange = (value, event) => {
     const { name } = event;
     setCode((prevCode) => ({
       ...prevCode,
-      [name]: value || "", // Handle undefined value
+      [name]: value || "",
     }));
   };
 
@@ -62,7 +63,7 @@ const CodeEditor = () => {
             value={code.html}
             theme="vs-dark-oceanic-next"
             onChange={(value, event) =>
-              handleInputChange(value, { name: "html" })
+              handleInputChange(String(value), { name: "html" })
             }
           />
         </div>
@@ -81,7 +82,7 @@ const CodeEditor = () => {
             value={code.css}
             theme="vs-dark-oceanic-next"
             onChange={(value, event) =>
-              handleInputChange(value, { name: "css" })
+              handleInputChange(String(value), { name: "css" })
             }
           />
         </div>
@@ -98,7 +99,7 @@ const CodeEditor = () => {
             value={code.javascript}
             theme="vs-dark-oceanic-next"
             onChange={(value, event) =>
-              handleInputChange(value, { name: "javascript" })
+              handleInputChange(String(value), { name: "javascript" })
             }
           />
         </div>
