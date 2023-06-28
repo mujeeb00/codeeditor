@@ -6,9 +6,6 @@ import { FaJs } from "react-icons/fa";
 import { RiSettings3Fill } from "react-icons/ri";
 import Editor, { OnChange } from "@monaco-editor/react";
 
-
-
-
 interface Code {
   html: string;
   css: string;
@@ -56,65 +53,63 @@ const CodeEditor = () => {
         {/* First Column */}
         <div className="col-4 ">
           <br />
-          <div><ImHtmlFive size={25} className="text-danger mb-1"/></div>
-        <Editor
-                height="200px"
-                language="html"
-                value={code.html}
-                theme="vs-dark-oceanic-next"
-                onChange={(value, event) =>
-                  handleInputChange(value, { name: "html" })
-                }
-              />
-
-        
+          <div>
+            <ImHtmlFive size={25} className="text-danger mb-1" />
+          </div>
+          <Editor
+            height="200px"
+            language="html"
+            value={code.html}
+            theme="vs-dark-oceanic-next"
+            onChange={(value, event) =>
+              handleInputChange(value, { name: "html" })
+            }
+          />
         </div>
 
         {/* Second Column */}
 
-     
         <div className="col-4">
-        <br />
-        <div>
-        <FaEnvira size={25} className="text-info"/>
-        </div>
-  
-        <Editor
-                height="200px"
-                language="css"
-                value={code.css}
-                theme="vs-dark-oceanic-next"
-                onChange={(value, event) =>
-                  handleInputChange(value, { name: "css" })
-                }
-              />
-          
+          <br />
+          <div>
+            <FaEnvira size={25} className="text-info" />
+          </div>
+
+          <Editor
+            height="200px"
+            language="css"
+            value={code.css}
+            theme="vs-dark-oceanic-next"
+            onChange={(value, event) =>
+              handleInputChange(value, { name: "css" })
+            }
+          />
         </div>
 
         {/* Third Column */}
         <div className="col-4 ">
           <br />
           <div>
-          <FaJs size={25} className='text-warning' />
+            <FaJs size={25} className="text-warning" />
           </div>
-        <Editor
-                height="200px"
-                language="javascript"
-                value={code.javascript}
-                theme="vs-dark-oceanic-next"
-                onChange={(value, event) =>
-                  handleInputChange(value, { name: "javascript" })
-                }
-              />
+          <Editor
+            height="200px"
+            language="javascript"
+            value={code.javascript}
+            theme="vs-dark-oceanic-next"
+            onChange={(value, event) =>
+              handleInputChange(value, { name: "javascript" })
+            }
+          />
         </div>
       </div>
-<br />
-      <div className="c mt-2 bg-sucess ">
+      <br />
+      <div className="mt-2">
         <div className="container-fluid ">
           <iframe
             srcDoc={`${code.html}<style>${code.css}</style><script>${code.javascript}</script>`}
             id="output"
-            className="text-primary  text-dark container-fluid"
+            className=" text-dark container-fluid"
           ></iframe>
         </div>
       </div>
