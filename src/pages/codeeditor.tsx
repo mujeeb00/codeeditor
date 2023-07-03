@@ -1,5 +1,8 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ImHtmlFive } from "react-icons/im";
+import { FaEnvira } from "react-icons/fa";
+import { FaJs } from "react-icons/fa";
 import Editor, { OnChange } from "@monaco-editor/react";
 
 interface Code {
@@ -52,7 +55,7 @@ const CodeEditor = () => {
         <div className=" col-md-12 col-lg-4">
           <br />
           <div>
-            testng
+          <ImHtmlFive size={25} className="text-danger mb-1" />
           </div>
           <Editor
             height="200px"
@@ -70,7 +73,7 @@ const CodeEditor = () => {
         <div className="col-md-12 col-lg-4">
           <br />
           <div>
-            tresjing
+          <FaEnvira size={25} className="text-info" />
           </div>
 
           <Editor
@@ -88,7 +91,7 @@ const CodeEditor = () => {
         <div className="col-md-12 col-lg-4">
           <br />
           <div>
-            testing
+          <FaJs size={25} className="text-warning" />
           </div>
           <Editor
             height="200px"
